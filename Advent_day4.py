@@ -19,7 +19,10 @@ def setsNeedAttention(s1, s2):
 
 # %% load data
 
-with open('day4_input.txt') as f:
+f_test='day4_test.txt'
+f_in='day4_input.txt'
+
+with open(f_in) as f:
     lines=f.readlines()
 
 allRanges=[parseRanges(l) for l in lines]
@@ -27,4 +30,6 @@ allRanges=[parseRanges(l) for l in lines]
 resBool=[setsNeedAttention(s1, s2) for s1, s2 in allRanges]
 
 result1=sum(resBool)
-    
+# %% part2
+resBool2=[not s1.isdisjoint(s2) for s1, s2 in allRanges]
+result2=sum(resBool2)
